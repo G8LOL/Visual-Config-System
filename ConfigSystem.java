@@ -33,12 +33,12 @@ import net.minecraft.client.gui.ScaledResolution;
 
 public class ConfigSystem extends GuiScreen{
     
-	public int offset;
-	 public static Scanner scanner;
-	 UnicodeFontRenderer ufr;
-	 CleanTextField textField;
-	 CleanTextField renameField;
-	 CleanTextField urlField;
+     public int offset;
+     public static Scanner scanner;
+     UnicodeFontRenderer ufr;
+     CleanTextField textField;
+     CleanTextField renameField;
+     CleanTextField urlField;
      public File dir;
      public File duplicateFile;
      public File rename;
@@ -76,89 +76,85 @@ public class ConfigSystem extends GuiScreen{
 		 
 		  
 		 
-		 float x2 = 260;
-         float y2 = 32;
-		 boolean hovered = mouseX >= x2 && mouseY >= y2 && mouseX < x2 + mc.fontRendererObj.getStringWidth("New") && mouseY < y2 + mc.fontRendererObj.FONT_HEIGHT;
+		        float x2 = 260;
+                        float y2 = 32;
+                        boolean hovered = mouseX >= x2 && mouseY >= y2 && mouseX < x2 + mc.fontRendererObj.getStringWidth("New") && mouseY < y2 + mc.fontRendererObj.FONT_HEIGHT;
 		
 			
-			this.drawRect(240, 20, 560, 300, 0xFF222222);
+	                this.drawRect(240, 20, 560, 300, 0xFF222222);
 			this.drawRect(240, 20, 560, 55, 0xFF111111);
 			this.drawRect(450, 20, 560, 300, 0xFF111111);
-			  RenderUtil1.drawRoundedRect(438, 58+   offset * 3, 440, 85+ offset * 3, 1, Color.GRAY);
+			RenderUtil1.drawRoundedRect(438, 58+   offset * 3, 440, 85+ offset * 3, 1, Color.GRAY);
 			if(!this.save) {
-			ufr.drawString("New", 260, 32, hovered ? 0x494949 : -1);
+			   ufr.drawString("New", 260, 32, hovered ? 0x494949 : -1);
 			}else if(this.save) {
-		    ufr.drawString("Back", 260, 32, hovered ? 0x494949 : -1);
-			}
-		//	  this.drawRect(22, 22, 100, 278, 0xFF111111);  
+		           ufr.drawString("Back", 260, 32, hovered ? 0x494949 : -1);
+			} 
 			int count = 0;
 			if (this.settings) {				
         		if(this.isMouseOnConfig(mouseX, 460, mouseY, 50, "Delete")) {
           		 ufr.drawString("Delete", 460, 50, 0x494949);	
           		}else {
-          	    ufr.drawString("Delete", 460, 50, -1);	
+          	           ufr.drawString("Delete", 460, 50, -1);	
           		}
         		if(this.isMouseOnConfig(mouseX, 500, mouseY, 50, "Duplicate")) {
-       		     ufr.drawString("Duplicate", 500, 50, 0x494949);	
-       		    }else {
-       			 ufr.drawString("Duplicate", 500, 50, -1);	
-       		    }
+       		           ufr.drawString("Duplicate", 500, 50, 0x494949);	
+       		        }else {
+       			   ufr.drawString("Duplicate", 500, 50, -1);	
+       		        } 
         		if(this.isMouseOnConfig(mouseX, 500, mouseY, 65, "Back")) {
-        		     ufr.drawString("Back", 500, 65, 0x494949);	
+        		    ufr.drawString("Back", 500, 65, 0x494949);	
         		}else {
-        			 ufr.drawString("Back", 500, 65, -1);	
+        	            ufr.drawString("Back", 500, 65, -1);	
         		}
         		if(this.isMouseOnConfig(mouseX, 460, mouseY, 65, "Save")) {
-       		     ufr.drawString("Save", 460, 65, 0x494949);	
-       		    }else {
-       			 ufr.drawString("Save", 460, 65, -1);	
-       		    }
+       		            ufr.drawString("Save", 460, 65, 0x494949);	
+       		        }else {
+       			    ufr.drawString("Save", 460, 65, -1);	
+       		        }
         		if(this.isMouseOnConfig(mouseX, 460, mouseY, 80, "Rename")) {
           		     ufr.drawString("Rename", 460, 80, 0x494949);	
           		}else {
-          			 ufr.drawString("Rename", 460, 80, -1);	
+          	             ufr.drawString("Rename", 460, 80, -1);	
           		}
-         }
-			GL11.glPushMatrix();
+                   }
+		
+		    GL11.glPushMatrix();
 		    this.prepareScissorBox(0.0f, 33.0f, width, height - 3);
 		    GL11.glEnable(3089);
 			for(File file : dir.listFiles()) {
-				   float x = 260;
-			         float y = 60 + count * 17- this.offset;
-		             String filename = file.getName().replace(".txt", "");
+		        float x = 260;
+			float y = 60 + count * 17- this.offset;
+		        String filename = file.getName().replace(".txt", "");
 			boolean hoverd = mouseX >= x && mouseY >= y && mouseX < x + mc.fontRendererObj.getStringWidth(filename) && mouseY < y + mc.fontRendererObj.FONT_HEIGHT;
-			   RenderUtil1.drawRoundedRect(250, 58+ (count * 17) - offset, 430, 72+ (count * 17)- offset, 2, Color.DARK_GRAY.darker());  	
-			ufr.drawString(file.getName().replace(".txt", ""), 260, 60 + count * 17- this.offset, hoverd ? 0x494949 : -1);
-		    
-			
+			RenderUtil1.drawRoundedRect(250, 58+ (count * 17) - offset, 430, 72+ (count * 17)- offset, 2, Color.DARK_GRAY.darker());  	
+			ufr.drawString(file.getName().replace(".txt", ""), 260, 60 + count * 17- this.offset, hoverd ? 0x494949 : -1);		  	
 				count++;
-			}
-			 GL11.glDisable(3089);
-			 GL11.glPopMatrix();
+		    }
+			GL11.glDisable(3089);
+			GL11.glPopMatrix();
 			if(this.renameConfig) {
-				this.renameField.draw(ufr);
+				 this.renameField.draw(ufr);
 				 float x = 460;
-		         float y = 120;
+		                 float y = 120;
 				 boolean hovered2 = mouseX >= x && mouseY >= y && mouseX < x + mc.fontRendererObj.getStringWidth("Save") && mouseY < y + mc.fontRendererObj.FONT_HEIGHT;
-				ufr.drawString("Save", 460, 120, hovered2 ? 0x494949 : -1);
+				 ufr.drawString("Save", 460, 120, hovered2 ? 0x494949 : -1);
 			}
 			if(this.save) {
 				 float x = 300;
-		         float y = 32;
+		                 float y = 32;
 				 boolean hovered2 = mouseX >= x && mouseY >= y && mouseX < x + mc.fontRendererObj.getStringWidth("Save") && mouseY < y + mc.fontRendererObj.FONT_HEIGHT;
-			 textField.draw(ufr);
-			 urlField.draw(ufr);
-				ufr.drawString("Save", 300, 32, hovered2 ? 0x494949 : -1);
+			         textField.draw(ufr);
+			         urlField.draw(ufr);
+				 ufr.drawString("Save", 300, 32, hovered2 ? 0x494949 : -1);
 				
 				if(this.isMouseOnConfig(mouseX, 414, mouseY, 32, "Load")) {
-         		     ufr.drawString("Load", 414, 32, 0x494949);	
-         		}else {
-         			 ufr.drawString("Load", 414, 32, -1);	
-         		}
-				
-				
-			}
-	}
+         		             ufr.drawString("Load", 414, 32, 0x494949);	
+         		        }else {
+         			     ufr.drawString("Load", 414, 32, -1);	
+         		        }	
+			     }
+	                  }
 	 public void prepareScissorBox(float x2, float y2, float x22, float y22) {
 	        ScaledResolution scale = new ScaledResolution(this.mc);
 	        int factor = scale.getScaleFactor();
@@ -166,11 +162,12 @@ public class ConfigSystem extends GuiScreen{
 	        GL11.glScissor((int)(x2 * (float)factor), (int)(((float)scale.getScaledHeight() - y22) * (float)factor) + 190, (int)((x22 - x2) * (float)factor), (int)((y22 - y2) * (float)factor) - 235);
 
 	 }
-	@Override
+	
+    @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         textField.keyTyped(typedChar, keyCode);      
         urlField.keyTyped(typedChar, keyCode);      
-           renameField.keyTyped(typedChar, keyCode);
+        renameField.keyTyped(typedChar, keyCode);
         
         super.keyTyped(typedChar, keyCode);
     }
@@ -184,26 +181,26 @@ public class ConfigSystem extends GuiScreen{
 	 }
 	 
 	 public void switchRename() {
-		 renameConfig  = !renameConfig;
+             renameConfig  = !renameConfig;
 	 }
 	
 	
 	@Override
 	public void mouseClicked(int mouseX, int mouseY, int button) {
-	    if(textField != null) {
-            textField.mouseClicked(mouseX, mouseY, ufr);
-        }
-	    if(urlField != null) {
-	    	urlField.mouseClicked(mouseX, mouseY, ufr);
-        }
-	    if(this.renameField != null) {
-	    	renameField.mouseClicked(mouseX, mouseY, ufr);
-        }
+	   if(textField != null) {
+               textField.mouseClicked(mouseX, mouseY, ufr);
+           }
+	   if(urlField != null) {
+	       urlField.mouseClicked(mouseX, mouseY, ufr);
+           }
+	   if(this.renameField != null) {
+	       renameField.mouseClicked(mouseX, mouseY, ufr);
+           }
 	    
-		if(button == 0) {
-			if(this.settings) {
-			if(this.isMouseOnConfig(mouseX, 500, mouseY, 65, "Back")) {
-   		       this.settings = false;
+	if(button == 0) {
+	      if(this.settings) {
+	            if(this.isMouseOnConfig(mouseX, 500, mouseY, 65, "Back")) {
+   		    this.settings = false;
    		    this.renameConfig = false;
    		   }
 			if(this.isMouseOnConfig(mouseX, 460, mouseY, 50, "Delete")) {
@@ -213,11 +210,10 @@ public class ConfigSystem extends GuiScreen{
 	   		      this.duplicate(this.selectedConfig.replace(".txt", "") + " - Duplicate " + " " + RandomUtils.nextLong(4444L, 100000000L), this.selectedConfig2);
 	   		   }
 			if(this.isMouseOnConfig(mouseX, 460, mouseY, 65, "Save")) {
-      		     this.save(selectedConfig2);
-      		}
+      		        this.save(selectedConfig2);
+      		           }
 			if(this.isMouseOnConfig(mouseX, 460, mouseY, 80, "Rename")) {
 				this.renameConfig = true;
-     		  // this.rename(this.renameField.getText(), this.selectedConfig2);
      		}
 			if(this.isMouseOnConfig(mouseX, 460, mouseY, 120, "Save") && this.renameConfig) {
 				//this.renameConfig = true;
