@@ -224,13 +224,13 @@ public class ConfigSystem extends GuiScreen{
 				if(this.isMouseOnConfig(mouseX, 414, mouseY, 32, "Load")) {
 				  this.onlineConfig(this.urlField.getText());
 	     		}
-			}
-			int count = 0;
-			for(File file : dir.listFiles()) {
+		}
+	       int count = 0;
+	       for(File file : dir.listFiles()) {
 			
 		    float x = 260;
-	         float y = 60 + count * 17- this.offset;
-             String filename = file.getName().replace(".txt", "");
+	            float y = 60 + count * 17- this.offset;
+                    String filename = file.getName().replace(".txt", "");
 	         if(mouseX >= x && mouseY >= y && mouseX < x + mc.fontRendererObj.getStringWidth(filename) && mouseY < y + mc.fontRendererObj.FONT_HEIGHT) {
 			    	  Configer.instance.Config(filename);
 	                  Artemis.instance.config = filename;
@@ -238,7 +238,7 @@ public class ConfigSystem extends GuiScreen{
 	         count++;
 			}
 			 float x = 260;
-	         float y = 32;
+	                 float y = 32;
 	            
 		         if(mouseX >= x && mouseY >= y && mouseX < x + mc.fontRendererObj.getStringWidth("New") && mouseY < y + mc.fontRendererObj.FONT_HEIGHT) {
 		          // Configer.instance.configSave(this.textField.getText());
@@ -250,27 +250,25 @@ public class ConfigSystem extends GuiScreen{
 		         float x2 = 300;
 		         float y2 = 32;
 		         if(this.save) {
-			     if(mouseX >= x2 && mouseY >= y2 && mouseX < x2 + mc.fontRendererObj.getStringWidth("Save") && mouseY < y2 + mc.fontRendererObj.FONT_HEIGHT) {
-			    //     System.out.println(textField.getText());
-			    	 Configer.instance.configSave(this.textField.getText());
-			             // this.switchSave();
+			     if(mouseX >= x2 && mouseY >= y2 && mouseX < x2 + mc.fontRendererObj.getStringWidth("Save") && mouseY < y2 + mc.fontRendererObj.FONT_HEIGHT) {			  
+			    	   Configer.instance.configSave(this.textField.getText());
 			     }
 		     }
 		}else if(button == 1) {
-			int count = 0;
-			for(File file : dir.listFiles()) {
+	           int count = 0;
+		   for(File file : dir.listFiles()) {
 				
-			    float x = 260;
+			 float x = 260;
 		         float y = 60 + count * 17;
-	             String filename = file.getName().replace(".txt", "");
+	                 String filename = file.getName().replace(".txt", "");
 		         if(mouseX >= x && mouseY >= y && mouseX < x + mc.fontRendererObj.getStringWidth(filename) && mouseY < y + mc.fontRendererObj.FONT_HEIGHT) {
 				  this.renameConfig = false;
-		        	 this.selectedConfig2 = file;
-		        	 this.selectedConfig = file.getName();	 
-                 this.settings = true;
+		        	  this.selectedConfig2 = file;
+		        	  this.selectedConfig = file.getName();	 
+                                  this.settings = true;
 		         }
 		         count++;
-				}
+		     } 
 		}
 	}
 	public boolean isMouseOnConfig(int mouseX, int x, int mouseY, int y, String text) {
@@ -279,9 +277,9 @@ public class ConfigSystem extends GuiScreen{
 	@Override
 	public void initGui() {
 	dir = new File(Minecraft.getMinecraft().mcDataDir, "Artemis Configs");
-    textField = new CleanTextField(350, 32, "", "Set Name");
-    urlField = new CleanTextField(450, 32, "", "URL");
-    renameField = new CleanTextField(460, 100, "", "Rename");
+        textField = new CleanTextField(350, 32, "", "Set Name");
+        urlField = new CleanTextField(450, 32, "", "URL");
+        renameField = new CleanTextField(460, 100, "", "Rename");
 	super.initGui();
 	}
 	public void duplicate(String filename, File original) {
